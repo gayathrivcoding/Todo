@@ -10,36 +10,40 @@ const addButton = document.getElementById("add");
 
 function handleclick(){
     // console.log("clickme",input.value);
-    addItem(input.value);
+    addListItem(input.value);
 
 }
 
 
-function addItem(itemValue){
+function addListItem(itemValue){
      
-     const li = document.createElement("li");
-     li.innerText = itemValue;
-     list.appendChild(li);
-
-}
-
-addButton.addEventListener("click",handleclick);
-
-
-
-// keyup event 
-const myinput = document.getElementById("myinput");
-myinput.addEventListener("keyup",handlekeyup);
-
-function handlekeyup(event){
-
-    const target = document.getElementById("target");  //can be avoided
-    console.log("myinput",event.target.value);
-    target.innerText = event.target.value;
+    if( itemValue !== ""){
+       
+    const li = document.createElement("li");
+    li.innerText = itemValue;
+    list.appendChild(li);
+    }
+     
 
 
 }
 
+// addButton.addEventListener("click",handleclick);  //submit form is taken for clicking and entering so click event is not needed
+
+
+
+
+const form = document.getElementById("form");
+
+form.addEventListener("submit",handlesubmit);
+
+
+function handlesubmit(event){
+      event.preventDefault();
+      console.log(event);
+      addListItem(input.value);
+      input.value ="";
+}
 
 
 
